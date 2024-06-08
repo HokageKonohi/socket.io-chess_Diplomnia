@@ -1,0 +1,54 @@
+extends layout
+
+block content
+
+  #banner.jumbotron
+    .container
+      h1 Chess 3 Режима
+      p.
+        1) Онлайн  
+      p.
+        2) 2 Человека
+      p.
+        3) Игра с компьютером  (ReactJS Chess)
+      p.
+        <a class="btn " href=" https://hokagekonohi.github.io/dist_chess/">
+        1 на 1 Человека
+        </a>
+      p.
+        <a class="btn " href="https://hokagekonohi.github.io/ReactJS-Chess-master/">
+        Игра с компьютером
+        </a>
+
+  .container
+    .row
+      .col-sm-6
+        h2 Начать новую игру
+        form#startForm(action="/start", method="POST", role="form")
+          .form-group
+            label Играть как
+            div
+              .btn-group(data-toggle="buttons")
+                label.btn.btn-default.active
+                  input(type="radio", name="player-color", value="white", checked="checked")
+                  | Белый
+                label.btn.btn-default
+                  input(type="radio", name="player-color", value="black")
+                  | Черный
+          .form-group
+            label(for="playerName") Имя
+            input#playerName.form-control(type="text", name="player-name", placeholder="Игрок 1")
+          button.btn.btn-primary(type="submit") Начать игру
+      .col-sm-6
+        h2 Присоединяйтесь к существующей игре
+        form#joinForm(action="/join", method="POST", role="form")
+          .form-group
+            label(for="gameID") Игра ID
+            input#gameID.form-control(type="text", name="game-id")
+          .form-group
+            label(for="playerName") Имя
+            input#playerName.form-control(type="text", name="player-name", placeholder="Игрок 2")
+          button.btn.btn-primary(type="submit") Присоединиться к игре
+
+  script(src="/js/jquery.min.js")
+  script(src="/js/bootstrap.min.js")
